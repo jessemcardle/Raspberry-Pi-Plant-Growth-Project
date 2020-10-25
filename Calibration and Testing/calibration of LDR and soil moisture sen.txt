@@ -1,0 +1,13 @@
+calibration of LDR and soil moisture sensor:
+
+soil moisture: 
+high value = 195
+
+low value = 0 // because no medium to pass through, so no voltage
+
+ldr:
+low = 244 // complete darkness
+med = 160 // finger covering senso
+high = 3 //shining phone torch at sensor
+
+dazed aND CONFUSED, THE USUAL SUSPECTS AND EMPIRE RECORDS
