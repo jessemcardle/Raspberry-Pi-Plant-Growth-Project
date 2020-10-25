@@ -1,8 +1,8 @@
-d<!-- PROJECT LOGO -->
+<!-- PROJECT LOGO -->
 <br />
 <p align="center">
-  <a href="https://github.com/othneildrew/Best-README-Template">
-    <img src="images/Prototype 2.png" alt="Logo" width="80" height="80">
+  <a href="https://github.com/jessemcardle/Raspberry-Pi-Plant-Growth-Project">
+    <img src="images/logo.png" alt="Logo">
   </a>
 
   <h3 align="center">Raspberry-Pi-Plant-Growth-Project</h3>
@@ -34,9 +34,9 @@ d<!-- PROJECT LOGO -->
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
-
+<!-- 
 [![Product Name Screen Shot][product-screenshot]](https://example.com)
-
+ -->
 Developing an IOT solution to acquire and monitor environmental conditions to support plant growth. The focus is on growing plants and monitoring their specific needs using hardware sensors with a Raspberry Pi. This includes the humidity of the air, water moisture in the soil, and light. Using this data that is collected, accurate decisions can be made on how to improve and optimize the plant growth (Example. The plant needs to be watered or the plant has too much sunlight or the temperature is too low). The main idea of this project can extend to many practical applications, which gives it a lot of potential.
 <!--
 Here's why:
@@ -95,6 +95,7 @@ const API_KEY = 'ENTER YOUR API';
 
 Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
 
+<!-- 
 _For more examples, please refer to the [Documentation](https://example.com)_
 
 
