@@ -2,7 +2,7 @@
 <br />
 <p align="center">
   <a href="https://github.com/jessemcardle/Raspberry-Pi-Plant-Growth-Project">
-    <img src="images/logo.png" alt="Logo">
+    <img src="Images/logo.png" alt="Logo">
   </a>
 
   <h3 align="center">Raspberry-Pi-Plant-Growth-Project</h3>
