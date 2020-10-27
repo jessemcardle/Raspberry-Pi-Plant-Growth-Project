@@ -72,12 +72,12 @@ while True:
             
             LDRpercentage = 100 - (lightValue / 254) * 100
             MSpercentage = ((moistureValue / 195) * 100)
-            
-            LDRpercentage = '%.2f' % LDRpercentage
-            MSpercentage = '%.2f' % MSpercentage 
 
             checkwater()
 
+            LDRpercentage = '%.2f' % LDRpercentage
+            MSpercentage = '%.2f' % MSpercentage 
+           
             print(temp, humi, moistureValue, lightValue)
             # Sending the data to thingspeak
             conn = urlopen(baseURL + '&field1=%s&field2=%s&field3=%s&field4=%s' %
