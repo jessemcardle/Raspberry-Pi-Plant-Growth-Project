@@ -89,7 +89,10 @@ while True:
             print ('Error')
         # DHT22 requires 2 seconds to give a reading, so make sure to add delay of above 2 seconds.
         sleep(300)
-    except:
-        raise Exception()
-        destroy()
-        break
+    
+
+    except:      
+            destroy()
+            raise Exception()
+            break
+        
