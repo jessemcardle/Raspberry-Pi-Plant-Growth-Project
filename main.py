@@ -4,8 +4,10 @@ import time
 from ADCDevice import *
 from urllib.request import urlopen
 from time import sleep
+import RPi.GPIO as GPIO
 
 adc = ADCDevice()
+valvePin = 11 #define valve pin
 
 # Enter Your API key here
 myAPI = '5KJ5TVQRF5NFSEXL'
@@ -30,6 +32,23 @@ def setup():
         "Please use command 'i2cdetect -y 1' to check the I2C address! \n"
         "Program Exit. \n");
         exit(-1)
+
+#Valve Setup
+GPIO.setmode(GPIO.BOARD)       # use PHYSICAL GPIO Numbering
+GPIO.setup(valvePin, GPIO.OUT)   # set the ledPin to OUTPUT mode
+GPIO.output(valvePin, GPIO.HIGH)
+
+def openvalve():
+    GPIO.output(valvePin, GPIO.LOW)
+    sleep(5)
+    GPIO.output(valvePin, GPIO.HIGH)
+
+def checkwater():
+    if MSpercentage < 70:
+        openvalve()
+
+def destroy():
+    GPIO.cleanup()                      # Release all GPIO
 
 while True:
     try:
@@ -57,7 +76,7 @@ while True:
             LDRpercentage = '%.2f' % LDRpercentage
             MSpercentage = '%.2f' % MSpercentage 
 
-
+            checkwater()
 
             print(temp, humi, moistureValue, lightValue)
             # Sending the data to thingspeak
@@ -72,4 +91,5 @@ while True:
         sleep(300)
     except:
         raise Exception()
+        destroy()
         break
