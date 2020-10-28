@@ -60,7 +60,7 @@ def checkwater():
     watertimedifference = now-lastwater #Get the difference since the last water
     minutes = watertimedifference.total_seconds() / 60 #Convert the difference to minutes
     
-    if int(MSPercentage) < 70 and minutes > 30: #Check if plants should be watered
+    if int(MSpercentage) < 70 and minutes > 30: #Check if plants should be watered
         openvalve()
     else:
         print('Does not need to be watered')
