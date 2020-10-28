@@ -5,6 +5,7 @@ from ADCDevice import *
 from urllib.request import urlopen
 from time import sleep
 import RPi.GPIO as GPIO
+import datetime
 
 adc = ADCDevice()
 valvePin = 11 #define valve pin
@@ -36,17 +37,34 @@ def setup():
 #Valve Setup
 GPIO.setmode(GPIO.BOARD)       # use PHYSICAL GPIO Numbering
 GPIO.setup(valvePin, GPIO.OUT)   # set the ledPin to OUTPUT mode
-GPIO.output(valvePin, GPIO.HIGH)
+GPIO.output(valvePin, GPIO.HIGH) # close the valve
+
+#Set up last water
+lastwater = datetime.datetime(2020, 5, 17)
 
 def openvalve():
-    GPIO.output(valvePin, GPIO.LOW)
+    global lastwater
+
+    GPIO.output(valvePin, GPIO.LOW) # open the valve
+    print('Valve is open')
+    print('Watering for 5 seconds...')
     sleep(5)
-    GPIO.output(valvePin, GPIO.HIGH)
+    GPIO.output(valvePin, GPIO.HIGH) # close the valve
+    print('Valve is closed now')
+
+    lastwater = datetime.datetime.now() # Flag to check against.
 
 def checkwater():
-    if MSpercentage < 70:
-        openvalve()
 
+    now = datetime.datetime.now() #Get the current time
+    watertimedifference = now-lastwater #Get the difference since the last water
+    minutes = watertimedifference.total_seconds() / 60 #Convert the difference to minutes
+    
+    if int(MSPercentage) < 70 and minutes > 30: #Check if plants should be watered
+        openvalve()
+    else:
+        print('Does not need to be watered')
+       
 def destroy():
     GPIO.cleanup()                      # Release all GPIO
 
@@ -88,6 +106,7 @@ while True:
         else:
             print ('Error')
         # DHT22 requires 2 seconds to give a reading, so make sure to add delay of above 2 seconds.
+        print('Waiting for 5 minutes...')
         sleep(300)
     
 
